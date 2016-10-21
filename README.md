@@ -5,7 +5,7 @@ To run the tests:
 
 1) Install Golang: https://golang.org/doc/install
 
-2) Create a directory.  I called my workspace.
+2) Create a directory.  I called mine workspace.
 
 3) Create a directory called "src" inside of that directory
 
