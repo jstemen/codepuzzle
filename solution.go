@@ -96,41 +96,41 @@ func FindLargestProduct(slice1 []int32) (prod int32, err error) {
 		return
 	}
 
-	var pos1 int32 = math.MinInt32
-	var pos2 int32 = math.MinInt32
-	var pos3 int32 = math.MinInt32
+	var biggest int32 = math.MinInt32
+	var bigger int32 = math.MinInt32
+	var big int32 = math.MinInt32
 
-	var neg1 int32 = math.MaxInt32
-	var neg2 int32 = math.MaxInt32
+	var smaller int32 = math.MaxInt32
+	var small int32 = math.MaxInt32
 
 	for _, v := range slice1 {
-		if v > pos1 {
-			pos3 = pos2
-			pos2 = pos1
-			pos1 = v
-		}else if (v > pos2) {
-			pos3 = pos2
-			pos2 = v
-		}else if (v > pos3) {
-			pos3 = v
+		if v > biggest {
+			big = bigger
+			bigger = biggest
+			biggest = v
+		}else if (v > bigger) {
+			big = bigger
+			bigger = v
+		}else if (v > big) {
+			big = v
 		}
 
-		if v < neg1 {
-			neg2 = neg1
-			neg1 = v
-		}else if (v < neg2) {
-			neg2 = v
+		if v < smaller {
+			small = smaller
+			smaller = v
+		}else if (v < small) {
+			small = v
 		}
 
 	}
 
-	p1, err := overflowDetectingMulti(pos1, pos2, pos3)
+	p1, err := overflowDetectingMulti(biggest, bigger, big)
 	if err != nil {
 		return
 	}
 
-	//Multiplying negative numbers first should prevent underflow
-	p2, err := overflowDetectingMulti(neg1, neg2, pos1)
+	//if the 2 smallest numbers are negative, they maybe be part of the solution
+	p2, err := overflowDetectingMulti(smaller, small, biggest)
 	if err != nil {
 		return
 	}
