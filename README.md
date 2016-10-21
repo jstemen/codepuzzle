@@ -22,10 +22,10 @@ Your workspace should look like this:
    
 5) Set the gopath: export GOPATH=absolute/path/to/workspace
  
-6) from the codepuzzle directory, run:"go get -t ./ ..."
+6) From the codepuzzle directory, run:"go get -t ./ ..."
 
 This should download the dependencies to run the tests to the src directory.
 
-7) from the codepuzzle dir run "go test".
+7) From the codepuzzle dir run "go test".
 
    
