@@ -38,12 +38,10 @@ func Merger(slice1 []int32, slice2 []int32) ([]int32) {
 
 func overflowDetectingMulti(nums ...int32) (prod int32, err error) {
 
-	fmt.Printf("Multiplying #%v\n", nums)
 	prod = nums[0]
 	for i := 1; i < len(nums); i++ {
 		x := nums[i]
 
-		fmt.Printf("x:%d * prod:%d = %d\n", x, prod, x * prod)
 		if (x == -1 && prod == math.MinInt32) || (x == math.MinInt32 && prod == -1) {
 			err = errors.New(fmt.Sprintf("Overflow detected x: %d, prod: %d\n", x, prod))
 			return
@@ -57,18 +55,15 @@ func overflowDetectingMulti(nums ...int32) (prod int32, err error) {
 		*/
 		if (prod > 1 || prod < -1) &&  (x > 1 || x < -1) {
 			if prod > 0 {
-				fmt.Println("prod is greater than 0 ")
 				if x > (math.MaxInt32 / prod ) {
 					err = errors.New(fmt.Sprintf("Overflow detected x: %d, prod: %d\n", x, prod))
 					return
 				}
-				fmt.Printf("(math.MinInt32 / prod ) = %d \n", (math.MinInt32 / prod ))
 				if x < (math.MinInt32 / prod ) {
 					err = errors.New(fmt.Sprintf("Underflow detected x: %d, prod: %d\n", x, prod))
 					return
 				}
 			}else {
-				fmt.Println("prod is less than 0 ")
 				if x < (math.MaxInt32 / prod ) {
 					err = errors.New(fmt.Sprintf("Overflow detected x: %d, prod: %d\n", x, prod))
 					return
